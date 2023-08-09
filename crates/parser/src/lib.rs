@@ -3,15 +3,17 @@
 //! This crate provides a parser for the Postgres SQL dialect.
 //! It is based in the pg_query.rs crate, which is a wrapper around the PostgreSQL query parser.
 //! The main `Parser` struct parses a source file and individual statements.
-//! The `Parse` struct contains the resulting concrete syntax tree, syntax errors, and the abtract syntax tree, which is a list of pg_query statements and their positions.
+//! The `Parse` struct contains the resulting concrete syntax tree, syntax errors, and the 
+//!   abtract syntax tree, which is a list of pg_query statements and their positions.
 //!
 //! The idea is to offload the heavy lifting to the same parser that the PostgreSQL server uses,
-//! and just fill in the gaps to be able to build both cst and ast from a a source file that
-//! potentially contains erroneous statements.
+//!   and just fill in the gaps to be able to build both cst and ast from a a source file that
+//!   potentially contains erroneous statements.
 //!
 //! The main drawbacks of the PostgreSQL query parser mitigated by this parser are:
-//! - it only parsed a full source text, and if there is any syntax error in a file, it will not parse anything and return an error.
-//! - it does not parse whitespaces and newlines, so it is not possible to build a concrete syntax tree build a concrete syntax tree.
+//! - it only parsed a full source text, and if there is any syntax error in a file,
+//!     it will not parse anything and return an error.
+//! - it does not parse whitespaces and newlines, so it is not possible to build a concrete syntax tree.
 //!
 //! To see how these drawbacks are mitigated, see the `statement.rs` and the `source_file.rs` module.
 
